@@ -10,7 +10,7 @@ resourcestring
 type
    AnsiCharHighMap = array[$80..$FF] of WideChar;
 
-{ Numery unicode górnej połówki kodowania Cp852 }
+{ Numery unicode gornej polowki kodowania Cp852 }
 const
   CP852Map : AnsiCharHighMap = (
       #$00C7, #$00FC, #$00E9, #$00E2, #$00E4, #$016F, #$0107, #$00E7,
@@ -69,7 +69,7 @@ begin
   Result := CharFromHighMap(Ch, CP852Map, 'IBM852');
 end;
 
-{ Przyjmuje łańcuch znaków w utf-16 i zwraca w kodowaniu cp852 }
+{ Przyjmuje string w utf-16 i zwraca w kodowaniu cp852 }
 function CP852Encode(WStr: WideString) : AnsiString;
 var
    i : Integer;
@@ -79,7 +79,7 @@ begin
       Result[i] := CP852EncodeChar(WStr[i]);
 end;
 
-{ Przyjmuje łańcuch znaków w cp852 i zwraca w kodowaniu utf-16 }
+{ Przyjmuje string w cp852 i zwraca w kodowaniu utf-16 }
 function CP852Decode(Str: AnsiString) : WideString;
 var
    i : Integer;
@@ -92,11 +92,11 @@ end;
 {
 procedure Quit;
 begin
-   WriteLn('Wyjście z programu! Naciśnij dowolny klawisz aby zakończyć!');
+   WriteLn('Wyjscie z programu! Nacisnij dowolny klawisz aby zakonczyc!');
    ReadLn;
 end;
 
-procedure WriteChars(Str : AnsiString);
+procedure WriteChars(Str: AnsiString);
 var
    i : Integer;
 begin
@@ -115,7 +115,8 @@ begin
    //WriteLn(TestStr);
    //WriteLn('After:');
    //WriteChars(TestStr);
-   { Wyślij na wyjście jako AnsiString w kodowaniu utf-8 }
+
+   { Wyslij na wyjscie jako AnsiString w kodowaniu utf-8 }
    WriteLn(Utf8Encode(CP852Decode(TestStr)));
    //Quit;
 end;
@@ -123,3 +124,4 @@ end;
 begin
    Main;
 end.
+

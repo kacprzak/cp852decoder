@@ -8,3 +8,9 @@ __history
 *.exe
 *.dll
 bin/*
+
+*.o
+*~
+*.out
+*.rst
+
