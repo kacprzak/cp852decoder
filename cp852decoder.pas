@@ -10,7 +10,7 @@ resourcestring
 type
    AnsiCharHighMap = array[$80..$FF] of WideChar;
 
-{ Numery Unicode górnej połówki kodowania Cp852 }
+{ Numery unicode górnej połówki kodowania Cp852 }
 const
   CP852Map : AnsiCharHighMap = (
       #$00C7, #$00FC, #$00E9, #$00E2, #$00E4, #$016F, #$0107, #$00E7,
@@ -54,7 +54,7 @@ begin
   raise EConvertError.CreateFmt(SCannotConvert, [Ord(Ch), Encoding]);
 end;
 
-{ Przyjmuje znak w kodzie cp852 i zwaraca jego numer w utf-16 }
+{ Przyjmuje znak w kodzie cp852 i zwaraca jego kod w utf-16 }
 function CP852DecodeChar(const P: AnsiChar) : WideChar;
 begin
   if Ord(P) < $80 then
@@ -63,7 +63,7 @@ begin
     Result := CP852Map[Ord(P)];
 end;
 
-{ Przyjmuje znak utf-16 i Zwaraca kod znaku w cp852 }
+{ Przyjmuje znak utf-16 i zwaraca kod znaku w cp852 }
 function CP852EncodeChar(const Ch: WideChar) : AnsiChar;
 begin
   Result := CharFromHighMap(Ch, CP852Map, 'IBM852');
